@@ -7,6 +7,12 @@ import com.bebidas.util.DBConnection;
 import java.sql.Connection;
 
 public class OrderService {
+    
+public double calcularTotal(double precoUnitario, int quantidade) {
+    return precoUnitario * quantidade;
+}
+
+
 
     public void salvar(Order order) throws Exception {
         try (Connection conn = DBConnection.getConnection()) {
