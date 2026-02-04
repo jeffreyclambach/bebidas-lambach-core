@@ -12,7 +12,15 @@ private static final String URL =
     private static final String USER = "root";          
     private static final String PASSWORD = "Q1w@e3r4t5"; 
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+public static Connection getConnection() throws SQLException {
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+        throw new RuntimeException("Driver MySQL não encontrado.");
     }
+
+    return DriverManager.getConnection(URL, USER, PASSWORD);
+}
+
 }
