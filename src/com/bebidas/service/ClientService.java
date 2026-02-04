@@ -10,6 +10,9 @@ import java.util.List;
 public class ClientService {
 
     public void salvar(Client client) throws Exception {
+        if (client == null) {
+    throw new IllegalArgumentException("Cliente não pode ser nulo");
+}
         try (Connection conn = DBConnection.getConnection()) {
             ClientDAO dao = new ClientDAO(conn);
             dao.insert(client);
